@@ -1,5 +1,6 @@
 package com.larryhsiao.clotho.drive;
 
+import com.google.api.services.drive.Drive;
 import com.silverhetch.clotho.source.ConstSource;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -14,8 +15,8 @@ class FileDeletionByIdTest {
      */
     @Test
     void normalCase() {
-        var fileName = "Test folder";
-        var drive = new TestClient().value();
+        String fileName = "Test folder";
+        Drive drive = new TestClient().value();
         new FileDeletionById(
             drive,
             new CreatedFolderId(

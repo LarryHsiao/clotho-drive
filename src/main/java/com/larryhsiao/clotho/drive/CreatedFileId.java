@@ -56,7 +56,7 @@ public class CreatedFileId implements Source<String> {
     }
 
     private String queryString(String parentId) {
-        var res = "name='" + newFileName +
+        String res = "name='" + newFileName +
             "' and '" + parentId + "' in parents and trashed = false";
         if (!mimeType.isEmpty()) {
             res = res + " and mimeType='" + mimeType + "'";

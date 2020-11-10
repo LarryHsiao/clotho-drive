@@ -1,5 +1,6 @@
 package com.larryhsiao.clotho.drive;
 
+import com.google.api.services.drive.Drive;
 import com.silverhetch.clotho.source.ConstSource;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -11,8 +12,8 @@ class CreatedFolderIdTest {
 
     @Test
     void normalCase() {
-        var fileName = "Test folder";
-        var drive = new TestClient().value();
+        String fileName = "Test folder";
+        Drive drive = new TestClient().value();
         new CreatedFolderId(
             drive,
             new ConstSource<>("root"),

@@ -13,6 +13,7 @@ System.out.println(thea.versionIndicator.apply(""))
 def versionName = thea.version.version().versionName()
 group 'com.larryhsiao'
 version versionName
+sourceCompatibility = 1.8
 
 test {
     useJUnitPlatform()

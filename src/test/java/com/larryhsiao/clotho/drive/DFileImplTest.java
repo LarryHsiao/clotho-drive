@@ -1,5 +1,7 @@
 package com.larryhsiao.clotho.drive;
 
+import com.google.api.services.drive.Drive;
+import com.silverhetch.clotho.Source;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -12,16 +14,16 @@ class DFileImplTest {
      */
     @Test
     void fields() {
-        var parentId = new RootFileId();
-        var fileName = "testFile.txt";
-        var mimeType = "plain/text";
-        var drive = new TestClient().value();
-        var fileId = new CreatedFileId(drive,
+        Source<String> parentId = new RootFileId();
+        String fileName = "testFile.txt";
+        String mimeType = "plain/text";
+        Drive drive = new TestClient().value();
+        String fileId = new CreatedFileId(drive,
             parentId,
             fileName,
             mimeType
         ).value();
-        var file = new QueriedDFiles(
+        DFile file = new QueriedDFiles(
             drive,
             new FileByName(
                 drive,
@@ -39,9 +41,9 @@ class DFileImplTest {
      */
     @Test
     void delete() {
-        var parentId = new RootFileId();
-        var fileName = "testFile.txt";
-        var drive = new TestClient().value();
+        Source<String> parentId = new RootFileId();
+        String fileName = "testFile.txt";
+        Drive drive = new TestClient().value();
         new CreatedFileId(drive, parentId, fileName, "plain/text").value();
         new QueriedDFiles(
             drive,

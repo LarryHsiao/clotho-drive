@@ -1,5 +1,7 @@
 package com.larryhsiao.clotho.drive;
 
+import com.google.api.services.drive.Drive;
+import com.silverhetch.clotho.Source;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -15,10 +17,10 @@ class UploadingTest {
      */
     @Test
     void normalCase() {
-        var parentId = new RootFileId();
-        var fileName = "testFile.txt";
-        var drive = new TestClient().value();
-        var fileId = new CreatedFileId(drive, parentId, fileName, "plain/text");
+        Source<String> parentId = new RootFileId();
+        String fileName = "testFile.txt";
+        Drive drive = new TestClient().value();
+        Source<String> fileId = new CreatedFileId(drive, parentId, fileName, "plain/text");
         new Uploading(
             drive,
             fileId,
