@@ -1,9 +1,18 @@
+buildscript {
+    dependencies {
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4'
+    }
+}
 plugins {
     id 'java'
+    id "com.jfrog.bintray" version "1.0"
+    id 'com.larryhsiao.thea' version '1.4.7'
 }
+System.out.println(thea.versionIndicator.apply(""))
 
+def versionName = thea.version.version().versionName()
 group 'com.larryhsiao'
-version '1.0.0'
+version versionName
 
 test {
     useJUnitPlatform()
@@ -23,4 +32,60 @@ dependencies {
     testImplementation 'com.google.oauth-client:google-oauth-client-jetty:1.23.0'
     testImplementation 'org.junit.jupiter:junit-jupiter:5.4.2'
     testImplementation group: 'junit', name: 'junit', version: '4.12'
+}
+
+jar {
+    from sourceSets.main.allSource
+}
+
+apply plugin: 'jacoco'
+jacocoTestReport {
+    reports {
+        xml.enabled = true
+    }
+}
+
+bintray {
+    user = 'larryhsiao'
+    key = System.getenv('BINTRAY_KEY')
+    publications = ['release']
+    publish = true
+    pkg {
+        repo = 'Elizabeth'
+        name = 'Cclotho-drive'
+        userOrg = 'larryhsiao'
+        licenses = ['MIT']
+        vcsUrl = 'https://github.com/LarryHsiao/clotho-drive.git'
+        version {
+            name = versionName
+            gpg {
+                sign = true
+                passphrase = System.getenv('BINTRAY_PASSPHRASE')
+            }
+        }
+    }
+}
+
+task sourcesJar(type: Jar) {
+    from sourceSets.main.allSource
+    classifier = 'sources'
+}
+
+task javadocJar(type: Jar) {
+    from javadoc
+    classifier = 'javadoc'
+}
+
+apply plugin: 'maven-publish'
+publishing {
+    publications {
+        release(MavenPublication) {
+            from components.java
+            artifact sourcesJar
+            artifact javadocJar
+            groupId 'com.larryhsiao'
+            artifactId 'clotho-drive'
+            version versionName
+        }
+    }
 }
