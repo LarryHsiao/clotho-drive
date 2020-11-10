@@ -4,8 +4,14 @@ import com.silverhetch.clotho.source.ConstSource;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+/**
+ * Test for {@link FileDeletionById}.
+ */
 class FileDeletionByIdTest {
 
+    /**
+     * Check if work
+     */
     @Test
     void normalCase() {
         var fileName = "Test folder";
