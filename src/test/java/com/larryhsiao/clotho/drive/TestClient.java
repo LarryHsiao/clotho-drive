@@ -2,7 +2,7 @@ package com.larryhsiao.clotho.drive;
 
 import com.google.api.services.drive.Drive;
 import com.google.api.services.drive.DriveScopes;
-import com.silverhetch.clotho.Source;
+import com.larryhsiao.clotho.Source;
 
 /**
  * Source to build {@link Drive} for unit tests.
