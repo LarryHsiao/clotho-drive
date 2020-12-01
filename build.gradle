@@ -20,12 +20,15 @@ test {
 }
 
 repositories {
+    maven {
+        url  "https://dl.bintray.com/larryhsiao/Elizabeth"
+    }
     mavenCentral()
     jcenter()
 }
 
 dependencies {
-    implementation('com.silverhetch:clotho:1.17.5')
+    implementation('com.larryhsiao:clotho:1.18.1')
     implementation('com.google.apis:google-api-services-drive:v3-rev136-1.25.0') {
         exclude group: 'org.apache.httpcomponents'
     }

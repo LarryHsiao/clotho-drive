@@ -1,7 +1,7 @@
 package com.larryhsiao.clotho.drive;
 
 import com.google.api.services.drive.Drive;
-import com.silverhetch.clotho.Action;
+import com.larryhsiao.clotho.Action;
 
 /**
  * Action to delete drive by file id.
