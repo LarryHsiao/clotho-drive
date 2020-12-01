@@ -53,7 +53,7 @@ bintray {
     publish = true
     pkg {
         repo = 'Elizabeth'
-        name = 'Cclotho-drive'
+        name = 'clotho-drive'
         userOrg = 'larryhsiao'
         licenses = ['MIT']
         vcsUrl = 'https://github.com/LarryHsiao/clotho-drive.git'
